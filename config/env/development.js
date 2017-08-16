@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/northwindnode-dev',
+	db: 'mongodb://localhost/chinmayamission',
 	app: {
-		title: 'NorthwindNode - Development Environment'
+		title: 'Chinamaya Mission'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',
