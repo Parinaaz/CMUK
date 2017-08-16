@@ -1,0 +1,18 @@
+<section data-ng-controller="EventtypesController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Event Types</h1>
+    </div>
+    <div class="form-group">
+        <input type="text" ng-model="search" typeahead="eventtype as eventtype.type for eventtype in eventtypes | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="eventtypeSearch($item)" placeholder="Search Event Type...">
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="eventtype in eventtypes | limitTo: offset - eventtypes.length | limitTo: pageSize" data-ng-href="#!/eventtypes/{{eventtype._id}}" class="list-group-item">
+			<h4 class="list-group-item-heading" data-ng-bind="eventtype.type"></h4>
+            <span data-ng-bind="eventtype.description"></span>
+        </a>
+    </div>
+    <pagination total-items="eventtypes.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="eventtypes.length > pageSize"></pagination>
+    <div class="alert alert-warning text-center" data-ng-hide="!eventtypes.$resolved || eventtypes.length">
+    	No event types yet, why don't you <a href="/#!/eventtype/create">create one</a>?
+    </div>
+</section>
